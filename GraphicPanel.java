@@ -1,18 +1,18 @@
 import java.awt.*;
+import javax.swing.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-
-public class GraphicPanel extends JPanel{
-	private Image image;
-			public void PaintImage(Graphics g){
-				String filename="Pictures/java";
-				ImageIcon Picture= new ImageIcon(filename);
-				image=Picture.getImage();
+	public class GraphicPanel extends JPanel
+			{
+				private Image im1;
 				
-				super.paintComponent(g);
-				g.drawImage(image,0,0, 859, 524, Color.black, this);
-				
-			}
-			
-		}
+				//draws an image
+				public void paintComponent(Graphics gr)
+				{	
+					String fname2 = "Picture.jpg";
+					ImageIcon background = new ImageIcon(fname2);
+					im1 = background.getImage();
+						
+					super.paintComponent(gr);
+					gr.drawImage(im1,0,0, 300, 250, this);
+				}
+}
