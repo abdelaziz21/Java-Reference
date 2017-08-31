@@ -15,13 +15,15 @@ public class Parent {
 	      double gpa;            // grade point (quality point) average
 	      String name;			// name of student
 	      
-	      int grade;
+	      
 	      String myname;
+	      String person;
+	      int grade;
 	      
 	      
-	      public Parent(int TEST3)//first constructor
+	      public Parent(int TEST3)//first constructor-special method called when object is instantiated
 	      {
-	    	  grade= TEST3;
+	    	  int grade= TEST3;
 	    	  
 	      }
 	      public Parent(){//second constructor- method oveloading-same name different arguments
@@ -65,10 +67,10 @@ public class Parent {
 			System.out.println("FinalTest: "+grade);
 		}
 		public String Getter(){//Accessor- method that returns the value of the private member variable
-			return myname;
+			return person;
 		}
-		public void Setter(){//Mutator- method that controls changes of variables
-			String myname= "Abdelaziz";
+		public void Setter(String myname){//Mutator- method that controls changes of variables
+			person=myname;
 		}
 		//for loop
 		public void forloop(){
@@ -162,11 +164,12 @@ public class Parent {
 		
 		}
 		//(extends)Polymorphism and Single Inheritance and (implements) Interface
-		abstract class child extends Parent implements Myinterface{
+		abstract class Child extends Parent implements Myinterface{
 			//abstraction hides irrelevant details from user
 			//partial abstraction- some methods have body and some don't
-			public child(){
-				super();
+			public Child(){
+				//sets parent constructor grade=76
+				super(76);
 				
 			}
 			public void method1(){
@@ -186,10 +189,10 @@ public class Parent {
 			public void method2();
 			
 		}
-		public void exception(){
+		public void studentinfo(){
 		try{//block is from brace to brace
 		     // Set up scanner to input file
-				Scanner inFile = new Scanner(new File("src/students.dat"));
+				Scanner inFile = new Scanner(new File("students.dat"));
 	         
 				System.out.println ("\n   Students on Academic Warning\n");
 	        
@@ -260,95 +263,48 @@ public class Parent {
 		         System.out.println("Both strings are equal.");
 		}
 		protected void TwoDimArray(){
-			  Scanner sc = new Scanner(System.in);
-			  
-			  System.out.println("How big would you like your matrix");
-			  System.out.print("Rows-?:");
-			 int r = sc.nextInt();
-			  System.out.print("Columns-?:");
-			  int c  = sc.nextInt();
-			  	//two-dimensional arrays
-			    int[][] table = new int[r][c];
-			    // Load the table with values
-			    for (int row=0; row < r; row++){
-			    	System.out.println("Please enter your row "+(row+1)+"?");
-			       for (int col=0; col < c; col++){
-			    	   System.out.print("Column "+(col+1)+"?");
-			          table[row][col] =sc.nextInt();
-			       }
-			    }
-			    //sum row
-			    for (int ro = 0; ro < table.length; ro++){
-			    	 int sum=0;
-			      for (int co = 0; co < table[ro].length; co++)
-			       sum = sum+table[ro][co];
-			      System.out.println("Your total for row  " + (ro + 1) + " = " + sum);
-			   }
-			    //sum columns
-			    for (int co = 0; co < table.length; co++){
-			   	 int sum=0;
-			     for (int ro = 0; ro < table[co].length; ro++)
-			      sum = sum+table[ro][co];
-			     System.out.println("Your total for column  " + (co + 1) + " = " + sum);
-			  }
-			    //sum matrix
-			    int sum=0;
-			    for (int r1 = 0; r1 < table.length; r1++){
-			      for (int c1 = 0; c1 < table[r1].length; c1++)
-			        sum = sum + table[r1][c1];
-			      }
-			    System.out.println("Your total for the "+r+" x "+c+" is "+sum);
-			    // Print the table
-			    for (int row=0; row < table.length; row++)
-			    {
-			       for (int col=0; col < table[row].length; col++)
-			          System.out.print (table[row][col] + "\t");
-			       System.out.println();
-			    }
+			String[][] names = {
+		            {"Mr. ", "Mrs. ", "Ms. "},
+		            {"Smith", "Jones"}
+		        };
+		        // Mr. Smith
+		        System.out.println(names[0][0] + names[1][0]);
+		        // Ms. Jones
+		        System.out.println(names[0][2] + names[1][1]);
+		        //length of 2d array
+		        System.out.println(names.length);
 		}
 		protected void OneDimArray(){
-			    
-				Scanner scan = new Scanner(System.in);
-				//declare 3 one dimensional-arrays with 3 values
-				int []qty = {98, 85, 76};
-			   double []price = {98.00, 85.00, 76.00};
-				   double amt[] = {98.00, 85.00, 76.00}; 
-				   //ask for input
-				
-				for(int i=0;i<3;i++){
-		            System.out.print(" Enter quantity of item "+(i+1)+": ");
-		            qty[i] = scan.nextInt();
-		            System.out.print(" Enter price of item "+(i+1)+": ");
-		            price[i] = scan.nextDouble();
-			   }
-			 //passes array reference to method
-			   calculate(amt, qty,price);
-		}
-		      //calculates amount
-			   public static void calculate(double [] amt,int[]qty,double[] price)
-			   {
-		           amt[0]=qty[0]*price[0];
-		           amt[1]=qty[1]*price[1];
-		           amt[2]=qty[2]*price[2];
-		         //passes array reference to method
-		           DisplayArrays(amt,qty,price);
-		          
-			   }
+			// declares an array of integers
+	        int[] anArray;
 
-		public static void DisplayArrays(double [] amt,int[]qty,double[] price)
-		{
-		  for(int i=0;i<3;i++){
-		            System.out.println("\nitem "+(i+1)+" quantity: "+qty[i]+" price:  $"+price[i]+" amount:  $"+amt[i]);
-		  }
+	        // allocates memory for 10 integers
+	        anArray = new int[10];
+	           
+	        // initialize first element
+	        anArray[0] = 100;
+	        // initialize second element
+	        anArray[1] = 200;
+	        // and so forth
+	        //shortcut syntax to create and initialize array
+	        int[] anArray2 = { 100, 200};
+	        //output both 1d arrays
+	        System.out.println("Element at index 0: " + anArray[0]);
+	        System.out.println("Element at index 0: " + anArray2[0]);
+	        
+			 
 		}
+		//Overriden method
 		    public void cry(){
 		        System.out.println("waaah ");
 		    }
+		    //inheritance- Object of AsianKid extends Parent
 			public void kid() {
 				Parent kid = new AsianKid();
 		        kid.cry();
 				
 			}
+			//inheritance
 			class AsianKid extends Parent{
 			    public void sniff(){
 			        System.out.println("sniff ");
@@ -360,8 +316,44 @@ public class Parent {
 			   }
 			
 			}
+			//set java compiler settings to 1.5 complaince level or higher
+			//enum type is a special data type that enables
+			//for a variable to be a set of predefined constants
+			public enum Day {
+				//Because they are constants, 
+				//the names of an enum type's fields are in uppercase letters.
+			    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+			    THURSDAY, FRIDAY, SATURDAY 
+			}
+			public class EnumTest {
+			    Day day;
+			    
+			    public EnumTest(Day day) {
+			        this.day = day;
+			    }
+			    
+			    public void WeekDay() {
+			        switch (day) {
+			            case MONDAY:
+			                System.out.println("Mondays are bad.");
+			                break;
+			                    
+			            case FRIDAY:
+			                System.out.println("Fridays are better.");
+			                break;
+			                         
+			            case SATURDAY: case SUNDAY:
+			                System.out.println("Weekends are best.");
+			                break;
+			                        
+			            default:
+			                System.out.println("Midweek days are so-so.");
+			                break;
+			        }
+			    }
+			}
 			//static method belongs to class rather than object of a class
-			static void format(){
+			public void format(){
 		    	  final double OUNCES_PER_POUND = 16.0;
 		 	      double pricePerPound; // price per pound
 		 	      double weightOunces; // weight in ounces
@@ -398,5 +390,4 @@ public class Parent {
 				}
 			
 }
-		
 
